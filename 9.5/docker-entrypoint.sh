@@ -45,8 +45,8 @@ if [ "$1" = 'postgres' ]; then
 		{ echo; echo "host all all 0.0.0.0/0 $authMethod"; } >> "$PGDATA/pg_hba.conf"
 
 		# cServer specific config
-		sed -i 's/\(host\s*all\s*all\s*127.0.0.1\/32\s*\)trust/\1md5/' /var/lib/postgresql/data/pg_hba.conf
-		{ echo; echo "127.0.0.1 pdb-demo.reference.cs.spotwa.re"; } >> "/etc/hosts"
+		# sed -i 's/\(host\s*all\s*all\s*127.0.0.1\/32\s*\)trust/\1md5/' /var/lib/postgresql/data/pg_hba.conf
+		# { echo; echo "127.0.0.1 pdb-demo.reference.cs.spotwa.re"; } >> "/etc/hosts"
 
 		# internal start of server in order to allow set-up using psql-client		
 		# does not listen on external TCP/IP and waits until start finishes
