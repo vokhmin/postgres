@@ -2,7 +2,7 @@
 set -eu
 
 declare -A aliases=(
-	[9.5]='9 latest'
+	[9.6]='9 latest'
 )
 
 self="$(basename "$BASH_SOURCE")"
@@ -72,4 +72,20 @@ for version in "${versions[@]}"; do
 		GitCommit: $commit
 		Directory: $version
 	EOE
+
+	for variant in alpine; do
+		[ -f "$version/$variant/Dockerfile" ] || continue
+
+		commit="$(dirCommit "$version/$variant")"
+
+		variantAliases=( "${versionAliases[@]/%/-$variant}" )
+		variantAliases=( "${variantAliases[@]//latest-/}" )
+
+		echo
+		cat <<-EOE
+			Tags: $(join ', ' "${variantAliases[@]}")
+			GitCommit: $commit
+			Directory: $version/$variant
+		EOE
+	done
 done

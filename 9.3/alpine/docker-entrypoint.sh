@@ -37,7 +37,7 @@ if [ "$1" = 'postgres' ] && [ "$(id -u)" = '0' ]; then
 	chown -R postgres /var/run/postgresql
 	chmod g+s /var/run/postgresql
 
-	exec gosu postgres "$BASH_SOURCE" "$@"
+	exec su-exec postgres "$BASH_SOURCE" "$@"
 fi
 
 if [ "$1" = 'postgres' ]; then
