@@ -62,6 +62,7 @@ RUN mkdir -p "$PGDATA" && chown -R postgres:postgres "$PGDATA" && chmod 777 "$PG
 VOLUME /var/lib/postgresql/data
 
 COPY docker-entrypoint.sh /
+COPY cserver-preset.sh /docker-entrypoint-initdb.d/
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
