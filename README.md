@@ -9,7 +9,7 @@ After installation of Docker (http://docker.com) clone this repo, switch to cser
     ⇒  cd postgres
     ⇒  git checkout cserver
     ...
-    ⇒  cd 9.5
+    ⇒  cd 9.6
     ⇒  docker build -t spotware/cserver-pdb .
 
 When Docker image is ready, start it using the next command:
